@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技成果跨境转化 - 一个投资人视角的探索与实践</title>
+    <meta name="description" content="广东猎投基金管理合伙企业创始合伙人涂晓鸣关于科技成果跨境转化的演讲">
+    <meta name="keywords" content="科技成果转化,猎投基金,技术转移,死亡之谷,创业,投资">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        },
+                        neutral: {
+                            50: '#fafafa',
+                            100: '#f4f4f5',
+                            200: '#e4e4e7',
+                            300: '#d4d4d8',
+                            400: '#a1a1aa',
+                            500: '#71717a',
+                            600: '#52525b',
+                            700: '#3f3f46',
+                            800: '#27272a',
+                            900: '#18181b'
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Preline UI -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .linear-card {
+            border: 1px solid rgba(235, 235, 235, 0.2);
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(6px);
+            transition: all 0.3s ease;
+        }
+        
+        .linear-card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .step-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 30px;
+            bottom: -30px;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: -1;
+        }
+        
+        .step-item:last-child::before {
+            display: none;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .chart-container {
+            height: 300px;
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-secondary-50 text-secondary-800">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-secondary-100 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <span class="text-xl font-bold text-primary-700 mr-2">猎投基金</span>
+                        <span class="text-sm text-secondary-500">| 跨境科技成果转化主题演讲</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#intro" class="text-secondary-600 hover:text-primary-600 transition-colors duration-200">机构简介</a>
+                    <a href="#part1" class="text-secondary-600 hover:text-primary-600 transition-colors duration-200">机遇与挑战</a>
+                    <a href="#part2" class="text-secondary-600 hover:text-primary-600 transition-colors duration-200">成功转化逻辑</a>
+                    <a href="#part3" class="text-secondary-600 hover:text-primary-600 transition-colors duration-200">共建生态</a>
+                </nav>
+                <button type="button" class="md:hidden p-2 text-secondary-500 hover:text-primary-600 transition-colors duration-200" data-hs-overlay="#mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 移动端菜单 -->
+    <div id="mobile-menu" class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-60 overflow-x-hidden overflow-y-auto bg-white">
+        <div class="hs-overlay-open:mt-0 mt-[-100%] transition-all duration-300 ease-in-out p-4">
+            <div class="flex justify-between items-center pb-3 border-b border-secondary-100">
+                <h3 class="font-bold text-lg text-secondary-800">菜单导航</h3>
+                <button type="button" class="flex items-center text-secondary-500 hover:text-secondary-700" data-hs-overlay="#mobile-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="py-4 flex flex-col space-y-4">
+                <a href="#intro" class="text-secondary-600 hover:text-primary-600 transition-colors duration-200" data-hs-overlay="#mobile-menu">机构简介</a>
+                <a href="#part1" class="text-secondary-600 hover:text-primary-600 transition-colors duration-200" data-hs-overlay="#mobile-menu">机遇与挑战</a>
+                <a href="#part2" class="text-secondary-600 hover:text-primary-600 transition-colors duration-200" data-hs-overlay="#mobile-menu">成功转化逻辑</a>
+                <a href="#part3" class="text-secondary-600 hover:text-primary-600 transition-colors duration-200" data-hs-overlay="#mobile-menu">共建生态</a>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Hero 区域 -->
+    <section class="relative bg-gradient-to-r from-primary-800 to-primary-600 text-white py-12 sm:py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">科技成果跨境转化</h1>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-primary-200">一个投资人视角的探索与实践</h2>
+                <div class="w-24 h-1 bg-primary-300 mx-auto mb-8"></div>
+                <div class="space-y-3">
+                    <p class="text-primary-100 text-lg sm:text-xl">演讲人：<span class="font-medium text-white">涂晓鸣</span></p>
+                    <p class="text-primary-100 text-lg sm:text-xl">广东猎投基金管理合伙企业</p>
+                    <p class="text-primary-100 text-lg sm:text-xl">创始合伙人</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 机构简介 -->
+    <section id="intro" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-center text-secondary-800">机构简介</h2>
+                <div class="prose prose-lg max-w-none">
+                    <p class="mb-6 text-secondary-600 leading-relaxed">
+                        猎投基金起源于10年前深圳清华大学研究院与牛津大学国际技术转移中心（ISIS）的合作，旨在像猎人一样用资本猎取全球技术转移项目。猎投基金在芬兰、瑞典、以色列、美国等地投资了32个跨境硬科技项目。
+                    </p>
+                    <div class="linear-card p-6 rounded-lg mb-8 bg-gradient-to-r from-primary-50 to-white border-l-4 border-primary-500">
+                        <h3 class="text-lg font-semibold mb-3 text-primary-700">猎投基金的核心使命</h3>
+                        <p class="text-secondary-700">在全球范围内发掘优质科技成果，通过资本赋能，促进其在中国市场的落地与产业化，创造社会价值与投资回报。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 数据卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-5xl mx-auto">
+                <div class="linear-card rounded-lg p-6 text-center bg-white shadow-sm">
+                    <div class="text-4xl font-bold text-primary-600 mb-2">32+</div>
+                    <div class="text-secondary-500 font-medium">跨境硬科技项目</div>
+                </div>
+                <div class="linear-card rounded-lg p-6 text-center bg-white shadow-sm">
+                    <div class="text-4xl font-bold text-primary-600 mb-2">5+</div>
+                    <div class="text-secondary-500 font-medium">投资国家/地区</div>
+                </div>
+                <div class="linear-card rounded-lg p-6 text-center bg-white shadow-sm">
+                    <div class="text-4xl font-bold text-primary-600 mb-2">10+</div>
+                    <div class="text-secondary-500 font-medium">年技术转移经验</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 第一部分：破题·跨境转化的机遇与挑战 -->
+    <section id="part1" class="py-16 bg-secondary-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold bg-primary-100 text-primary-800 rounded-full mb-3">第一部分</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-secondary-800">破题·跨境转化的机遇与挑战</h2>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm p-6 sm:p-8 mb-12 scroll-reveal">
+                    <div class="prose prose-lg max-w-none">
+                        <p class="mb-4 text-secondary-600 leading-relaxed">
+                            科技成果的转化比取得科研成果更为困难，这已被公认为世界级难题。大量研究显示，从实验室创新走向市场中，横亘着巨大的鸿沟——人们称之为 <strong class="text-primary-700">"死亡之谷"</strong>，绝大多数科研成果止步实验室。
+                        </p>
+                        <p class="mb-6 text-secondary-600 leading-relaxed font-medium">
+                            因此，如何跨越"死亡之谷"实现成果转化，是比取得科技突破更大的挑战。难以产业化落地——这正是许多海外技术的共性问题。而中国的创新环境和应用场景，正在成为跨越'死亡之谷'的超级电梯！
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 死亡之谷可视化 -->
+                <div class="relative bg-white rounded-xl shadow-sm p-6 sm:p-8 mb-12 overflow-hidden scroll-reveal">
+                    <h3 class="text-xl font-bold mb-6 text-secondary-800">科技成果转化的"死亡之谷"</h3>
+                    <div class="relative py-6">
+                        <!-- 阶段名称 -->
+                        <div class="relative h-20 mb-8">
+                            <div class="absolute left-[15%] top-0 transform -translate-x-1/2 text-center">
+                                <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mx-auto mb-2">
+                                    <i class="fas fa-vial text-2xl"></i>
+                                </div>
+                                <div class="font-medium text-primary-700">技术研发</div>
+                            </div>
+                            <div class="absolute left-1/2 top-0 transform -translate-x-1/2 text-center">
+                                <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mx-auto mb-2">
+                                    <i class="fas fa-cogs text-2xl"></i>
+                                </div>
+                                <div class="font-medium text-primary-700">产业化</div>
+                            </div>
+                            <div class="absolute left-[85%] top-0 transform -translate-x-1/2 text-center">
+                                <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mx-auto mb-2">
+                                    <i class="fas fa-chart-line text-2xl"></i>
+                                </div>
+                                <div class="font-medium text-primary-700">市场规模化</div>
+                            </div>
+                        </div>
+                        
+                        <!-- 死亡之谷图形表示 -->
+                        <div class="relative h-40">
+                            <!-- 山峰和谷底图形 -->
+                            <div class="absolute left-0 right-0 bottom-0 h-40 overflow-hidden">
+                                <svg viewBox="0 0 1000 200" preserveAspectRatio="none" class="absolute left-0 bottom-0 w-full h-full">
+                                    <!-- 左侧山峰 -->
+                                    <path d="M0,200 L0,50 Q150,0 250,80 T500,180 L500,200 Z" fill="#dbeafe"></path>
+                                    <!-- 右侧山峰 -->
+                                    <path d="M1000,200 L1000,50 Q850,0 750,80 T500,180 L500,200 Z" fill="#bfdbfe"></path>
+                                    <!-- 谷底阴影 -->
+                                    <path d="M250,80 Q350,160 500,180 Q650,160 750,80" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="8 4"></path>
+                                </svg>
+                                
+                                <!-- 死亡之谷标签 -->
+                                <div class="absolute left-1/2 bottom-8 transform -translate-x-1/2 bg-red-100 text-red-700 px-4 py-2 rounded-full font-bold border border-red-300">
+                                    死亡之谷
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 解释说明 -->
+                        <div class="mt-4 p-4 bg-secondary-50 rounded-lg text-secondary-700 text-sm">
+                            <p class="flex items-start">
+                                <i class="fas fa-info-circle text-primary-600 mt-1 mr-2"></i>
+                                <span>科研成果从实验室走向市场经历的<strong class="text-red-600">技术断层</strong>、<strong class="text-red-600">市场认知偏差</strong>和<strong class="text-red-600">组织能力断档</strong>等难关，形成了难以跨越的"死亡之谷"。在中国，丰富的场景应用与完整的产业链正为跨境技术转化提供独特优势。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 三大屏障 -->
+                <h3 class="text-xl font-bold mb-6 text-center text-secondary-800 scroll-reveal">"死亡之谷"三大屏障</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div class="linear-card rounded-xl p-6 bg-white shadow-sm scroll-reveal">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mb-4">
+                            <i class="fas fa-flask text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2 text-secondary-800">技术断层</h4>
+                        <p class="text-secondary-600">实验室成果到中试放大失败率高达<span class="font-bold text-primary-700">67%</span>。</p>
+                    </div>
+                    <div class="linear-card rounded-xl p-6 bg-white shadow-sm scroll-reveal" style="transition-delay: 0.1s;">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mb-4">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2 text-secondary-800">市场认知偏差</h4>
+                        <p class="text-secondary-600"><span class="font-bold text-primary-700">73%</span>的技术估值存在严重误判。</p>
+                    </div>
+                    <div class="linear-card rounded-xl p-6 bg-white shadow-sm scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mb-4">
+                            <i class="fas fa-users-cog text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2 text-secondary-800">组织能力断档</h4>
+                        <p class="text-secondary-600">创始人的技术思维与商业化能力错配。</p>
+                    </div>
+                </div>
+                
+                <!-- 中国的优势 -->
+                <div class="linear-card rounded-xl p-6 sm:p-8 bg-gradient-to-r from-primary-600 to-primary-800 text-white shadow-md scroll-reveal">
+                    <h3 class="text-xl font-bold mb-4">中国的创新优势</h3>
+                    <p class="mb-4">
+                        中国拥有全球最完备的产业链和最丰富的应用场景，这使得海外技术在中国能够快速找到产业化路径。
+                    </p>
+                    <div class="flex items-center">
+                        <i class="fas fa-rocket mr-2"></i>
+                        <span class="font-medium">中国正在成为跨越"死亡之谷"的超级电梯！</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 第二部分：解码·成功转化的底层逻辑 -->
+    <section id="part2" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-3 py-1 text-xs font-semibold bg-primary-100 text-primary-800 rounded-full mb-3">第二部分</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-secondary-800">解码·成功转化的底层逻辑</h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- 时间线 -->
+                <div class="space-y-12 relative">
+                    <!-- 因素1 -->
+                    <div class="step-item relative pl-16 scroll-reveal">
+                        <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white font-bold text-lg">1</div>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-primary-500">
+                            <h3 class="text-2xl font-bold mb-4 text-primary-700">自检和早筛，选好创业领头人</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">科技带头人≠创业领头人</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">道德、坚守和胸怀是关键</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">创业领头人错配，创业必败</p>
+                                </div>
+                            </div>
+                            <div class="bg-secondary-50 rounded-lg p-4 mt-4">
+                                <h4 class="text-lg font-semibold mb-2 text-primary-700">案例速览</h4>
+                                <p class="text-secondary-600">
+                                    芬兰VTT项目：<span class="font-medium">技术一流但缺团队 → 协助组建专业团队 → 成功对接中铁建和中车市场</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 因素2 -->
+                    <div class="step-item relative pl-16 scroll-reveal">
+                        <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white font-bold text-lg">2</div>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-primary-500">
+                            <h3 class="text-2xl font-bold mb-4 text-primary-700">早期投资人不仅带来资金，更是创业导师</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">熟知创业陷阱</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">带来核心资源</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">创业者惜股可能错失价值</p>
+                                </div>
+                            </div>
+                            <div class="bg-secondary-50 rounded-lg p-4 mt-4">
+                                <h4 class="text-lg font-semibold mb-2 text-primary-700">案例速览</h4>
+                                <p class="text-secondary-600">
+                                    瑞典碳化硅项目：<span class="font-medium">猎投投资 → 获国家大基金、博世和中车资本支持 → 即将上市，预估市值超150亿港元</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 因素3 -->
+                    <div class="step-item relative pl-16 scroll-reveal">
+                        <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white font-bold text-lg">3</div>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-primary-500">
+                            <h3 class="text-2xl font-bold mb-4 text-primary-700">单品首1亿是创业走出高风险区的金标准</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">聚焦单一产品线</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">避免"眼高手低"</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">年销售破亿是关键里程碑</p>
+                                </div>
+                            </div>
+                            <div class="bg-secondary-50 rounded-lg p-4 mt-4">
+                                <h4 class="text-lg font-semibold mb-2 text-primary-700">案例速览</h4>
+                                <p class="text-secondary-600">
+                                    柔性电子技术：<span class="font-medium">芬兰公司十年未突破 VS 中科院专家转化为运动电子面膜，首年破亿</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 因素4 -->
+                    <div class="step-item relative pl-16 scroll-reveal">
+                        <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white font-bold text-lg">4</div>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-primary-500">
+                            <h3 class="text-2xl font-bold mb-4 text-primary-700">应用场景创新比技术迭代更重要！</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">场景决定技术价值</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">找准场景规避技术劣势</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">中国拥有丰富应用场景</p>
+                                </div>
+                            </div>
+                            <div class="bg-secondary-50 rounded-lg p-4 mt-4">
+                                <h4 class="text-lg font-semibold mb-2 text-primary-700">案例速览</h4>
+                                <p class="text-secondary-600">
+                                    生物质炼化技术：<span class="font-medium">美国资源受限 → 移植到黑龙江丰富玉米芯资源区 → 成本降低60%，进入国际供应链</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 因素5 -->
+                    <div class="step-item relative pl-16 scroll-reveal">
+                        <div class="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white font-bold text-lg">5</div>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-primary-500">
+                            <h3 class="text-2xl font-bold mb-4 text-primary-700">公司治理是创业全生命周期的第一个纽扣</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">可持续优化的股权结构</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">合规的财务制度</p>
+                                </div>
+                                <div class="bg-primary-50 rounded-lg p-4 text-center">
+                                    <p class="text-lg font-bold text-primary-800">稳定的核心团队</p>
+                                </div>
+                            </div>
+                            <div class="bg-primary-100 rounded-lg p-6 mt-4 border-l-4 border-primary-600">
+                                <p class="text-primary-800 font-bold text-xl text-center">
+                                    "第一个纽扣必须系正"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 第三部分：升华·共建技术跨境转化生态 -->
+    <section id="part3" class="py-16 bg-secondary-50 text-secondary-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-3 py-1 text-xs font-semibold bg-primary-100 text-primary-800 rounded-full mb-3">第三部分</span>
+                <h2 class="text-2xl sm:text-3xl font-bold">升华·共建技术跨境转化生态</h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- 中国式技术转化三大支柱 -->
+                <h3 class="text-2xl font-bold mb-8 text-center">中国式技术转化三大支柱</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-white rounded-xl p-8 shadow-md text-center scroll-reveal">
+                        <div class="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-primary-600 text-white mb-6">
+                            <i class="fas fa-handshake text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4 text-primary-700">协同机制</h4>
+                        <p class="text-lg font-medium">打破科学家与企业家的壁垒，形成跨领域协作生态系统</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-8 shadow-md text-center scroll-reveal" style="transition-delay: 0.1s;">
+                        <div class="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-primary-600 text-white mb-6">
+                            <i class="fas fa-cogs text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4 text-primary-700">支持体系</h4>
+                        <p class="text-lg font-medium">构建"研发-转化-产业化"闭环支持体系，为技术落地保驾护航</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-8 shadow-md text-center scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-primary-600 text-white mb-6">
+                            <i class="fas fa-project-diagram text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4 text-primary-700">全周期平台</h4>
+                        <p class="text-lg font-medium">提供从实验室到市场的全生命周期服务，跨越"死亡之谷"</p>
+                    </div>
+                </div>
+
+                <!-- 新型研发机构亮点 -->
+                <div class="bg-white rounded-xl p-8 mb-12 shadow-md scroll-reveal">
+                    <h3 class="text-2xl font-bold mb-6 text-primary-700 text-center">中国特色：新型研发机构</h3>
+                    <p class="text-xl font-medium mb-8 text-center leading-relaxed">
+                        我国新型研发机构是集成科技创新与成果转化的关键平台<br>
+                        <span class="font-bold text-primary-700">成为最具中国特色的批量成果转化引擎</span>
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+                        <div class="text-center">
+                            <div class="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mb-4">
+                                <i class="fas fa-flask-vial text-3xl"></i>
+                            </div>
+                            <p class="font-medium">公共研发平台</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mb-4">
+                                <i class="fas fa-lightbulb text-3xl"></i>
+                            </div>
+                            <p class="font-medium">概念验证能力</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mb-4">
+                                <i class="fas fa-graduation-cap text-3xl"></i>
+                            </div>
+                            <p class="font-medium">创业导师辅导</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-primary-100 text-primary-700 mb-4">
+                                <i class="fas fa-coins text-3xl"></i>
+                            </div>
+                            <p class="font-medium">种子资金支持</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-primary-50 rounded-lg p-6 mt-8">
+                        <p class="text-lg font-medium text-primary-800 text-center">
+                            新型研发机构打破了传统科研院所的体制约束，实现了"技术+资本+场景+团队"的深度融合
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 东方理工大学案例 -->
+                <div class="bg-gradient-to-r from-primary-600 to-primary-800 text-white rounded-xl p-8 mb-12 shadow-lg scroll-reveal">
+                    <h3 class="text-2xl font-bold mb-6 text-center">东方理工产业研究院</h3>
+                    <div class="mb-6">
+                        <p class="text-xl leading-relaxed">
+                            <i class="fas fa-check-circle mr-2"></i> 大学培养一流 <span class="font-bold text-amber-300">人才</span>
+                        </p>
+                        <p class="text-xl leading-relaxed">
+                            <i class="fas fa-check-circle mr-2"></i> 研究院培育一流 <span class="font-bold text-amber-300">企业</span>
+                        </p>
+                        <p class="text-xl leading-relaxed">
+                            <i class="fas fa-check-circle mr-2"></i> 打造"技术孵化-产业落地-资本赋能"的 <span class="font-bold text-amber-300">全链条生态</span>
+                        </p>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <div class="inline-block px-6 py-3 bg-white text-primary-700 rounded-full font-bold text-lg">
+                            海外院士成果转化的理想平台
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 结论与展望 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold bg-primary-100 text-primary-800 rounded-full mb-3">总结</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-secondary-800 mb-4">结论与展望</h2>
+                    <div class="w-24 h-1 bg-primary-500 mx-auto"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl p-8 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-globe-asia text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">中国独特优势</h3>
+                        </div>
+                        <p class="text-xl leading-relaxed">
+                            中国独特的产业环境和丰富的应用场景为海内外技术提供了
+                            <span class="font-bold text-amber-300 underline decoration-2 underline-offset-4">前所未有的机遇</span>
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-primary-700 to-primary-600 text-white rounded-xl p-8 shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-cogs text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">生态构建</h3>
+                        </div>
+                        <p class="text-xl leading-relaxed">
+                            深刻理解成功转化的底层逻辑，构建有效的转化生态系统，
+                            <span class="font-bold text-amber-300 underline decoration-2 underline-offset-4">促进全球创新成果在中国落地</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-16">
+                    <div class="inline-block mx-auto mb-8 relative">
+                        <i class="fas fa-quote-left text-6xl text-primary-200 absolute -left-8 -top-8"></i>
+                        <p class="text-2xl font-medium text-secondary-600 italic px-12">
+                            科技成果转化是创新生态的核心环节<br>
+                            中国正在成为全球创新成果转化的超级平台
+                        </p>
+                        <i class="fas fa-quote-right text-6xl text-primary-200 absolute -right-8 -bottom-8"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="bg-secondary-800 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center text-secondary-400">
+                    <p>&copy; 2025 广东猎投基金管理合伙企业.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Preline UI JS -->
+    <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.js"></script>
+    
+    <!-- 自定义脚本 -->
+    <script>
+        // 死亡之谷图表
+        const valleyCtx = document.getElementById('valleyOfDeathChart');
+        if (valleyCtx) {
+            // 注释掉或移除之前的图表代码，因为已经替换为静态HTML/CSS展示
+            // const valleyChart = new Chart(valleyCtx, {...});
+        }
+        
+        // 滚动显示动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化Preline UI
+            HSStaticMethods.autoInit();
+            
+            // 滚动显示效果
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            
+            const revealOnScroll = function() {
+                for (let i = 0; i < revealElements.length; i++) {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = revealElements[i].getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        revealElements[i].classList.add('active');
+                    }
+                }
+            };
+            
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // 首次加载时触发
+        });
+    </script>
+</body>
+</html>
